@@ -1,462 +1,889 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Raunak Manekar</title>
-    <meta name="author" content="Jon Barron">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raunak Manekar — Assistant Professor, BITS Pilani Goa</title>
+<meta name="description" content="Raunak Manekar, Assistant Professor of Computer Science at BITS Pilani Goa Campus. Research in 3D vision, autonomous driving, computational imaging, and AI for science.">
+<style>
+  /* ── Reset & Base ─────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- Font Awesome CDN link -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  :root {
+    --navy:    #0F2240;
+    --navy-lt: #1a3560;
+    --amber:   #C4860A;
+    --amber-lt:#F5F0E8;
+    --slate:   #3D4F66;
+    --body:    #2C3A4A;
+    --muted:   #5F7080;
+    --rule:    #D4DCE5;
+    --bg:      #FAFAF8;
+    --white:   #FFFFFF;
+    --focus:   #2563EB;
 
-    <style>
-      /* General styles */
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-      }
-      
-      h2 {
-        font-size: 2rem;
-        margin-top: 2rem;
-        color: #333;
-      }
+    --ff-serif: Georgia, 'Times New Roman', serif;
+    --ff-sans:  'Inter', system-ui, -apple-system, sans-serif;
 
-      .section-heading {
-        margin-top: 40px;
-        margin-bottom: 20px;
-        font-size: 1.8rem;
-        color: #333;
-      }
+    --max-w:   900px;
+    --side-w:  220px;
+  }
 
-      /* Social icons styling */
-      .social-icons {
-        text-align: center;
-        margin-top: 20px;
-      }
+  html { scroll-behavior: smooth; }
 
-      .social-icons a {
-        color: #007bff;
-        font-size: 2rem;
-        margin: 0 15px;
-        transition: color 0.3s;
-      }
+  body {
+    font-family: var(--ff-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--body);
+    background: var(--bg);
+  }
 
-      .social-icons a:hover {
-        color: #0056b3;
-      }
+  a {
+    color: var(--navy);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  a:hover { color: var(--amber); }
+  a:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 
-      .social-icons i {
-        vertical-align: middle;
-      }
+  img { display: block; max-width: 100%; }
 
+  /* ── Skip Link ───────────────────────────────────────────────── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    background: var(--focus);
+    color: #fff;
+    padding: .4rem .8rem;
+    border-radius: 0 0 4px 4px;
+    font-size: .875rem;
+    z-index: 999;
+    text-decoration: none;
+  }
+  .skip-link:focus { top: 0; }
 
-      /* News Section Styles */
-      .news-section {
-        background-color: #f8f9fa;
-        padding: 30px;
-        margin-top: 30px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
+  /* ── Top Nav ─────────────────────────────────────────────────── */
+  .site-nav {
+    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--amber);
+  }
+  .site-nav__inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    min-height: 48px;
+  }
+  .site-nav__name {
+    font-family: var(--ff-serif);
+    font-size: .95rem;
+    color: rgba(255,255,255,.85);
+    margin-right: auto;
+    white-space: nowrap;
+    letter-spacing: .01em;
+  }
+  .site-nav__links {
+    display: flex;
+    list-style: none;
+    gap: 0;
+  }
+  .site-nav__links a {
+    display: block;
+    padding: .75rem .9rem;
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    font-size: .82rem;
+    letter-spacing: .02em;
+    transition: color .15s, background .15s;
+  }
+  .site-nav__links a:hover { color: #fff; background: var(--navy-lt); }
+  .site-nav__links a:focus-visible { outline-color: #fff; }
 
-      .news-section h2 {
-        font-size: 2rem;
-        color: #333;
-        margin-bottom: 15px;
-      }
+  /* ── Layout Shell ────────────────────────────────────────────── */
+  .page-wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
 
-      .news-section ul {
-        list-style-type: none;
-        padding-left: 0;
-      }
+  /* ── Header / Profile ────────────────────────────────────────── */
+  .profile {
+    display: grid;
+    grid-template-columns: var(--side-w) 1fr;
+    gap: 2.5rem;
+    padding: 3rem 0 2.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
 
-      .news-section li {
-        margin: 10px 0;
-        font-size: 1.1rem;
-        line-height: 1.6;
-      }
+  .profile__photo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
 
-      /* Announcements Section Styles */
-      #announcements {
-        background-color: #e9ecef;
-        padding: 20px;
-        margin-top: 40px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
+  .profile__photo {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid var(--navy);
+    /* TODO: adjust object-position if headshot crops awkwardly */
+  }
 
-      .announcement-card {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
+  .profile__contact {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    font-size: .82rem;
+    color: var(--slate);
+    width: 100%;
+  }
+  .profile__contact li { display: flex; align-items: flex-start; gap: .4rem; }
+  .profile__contact svg { flex-shrink: 0; margin-top: 3px; }
+  .profile__contact a { color: var(--slate); font-size: .82rem; word-break: break-all; }
+  .profile__contact a:hover { color: var(--amber); }
 
-      .announcement-card p {
-        font-size: 1.2rem;
-        line-height: 1.5;
-      }
-      
-      .announcement-card a {
-        color: #007bff;
-        text-decoration: none;
-      }
+  .profile__info { display: flex; flex-direction: column; gap: .9rem; }
 
-      .announcement-card a:hover {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
+  .profile__name {
+    font-family: var(--ff-serif);
+    font-size: 2.1rem;
+    font-weight: normal;
+    line-height: 1.15;
+    color: var(--navy);
+    letter-spacing: -.01em;
+  }
 
-  <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
-                  Raunak Manekar
-                </p>
+  .profile__title {
+    font-size: .9rem;
+    color: var(--slate);
+    line-height: 1.4;
+    border-left: 3px solid var(--amber);
+    padding-left: .75rem;
+  }
 
-                <p> I am an Assistant Professor at the CS & IS department at <a href="https://www.bits-pilani.ac.in/goa/">BITS-Pilani Goa Campus</a> . I work at the intersection of computer vision, generative AI and computational imaging. I'm passionate about developing learning-based solutions for visual inverse problems in vairous fields of science and engineering.
-                </p>
+  .profile__bio {
+    font-size: .95rem;
+    line-height: 1.72;
+    color: var(--body);
+    max-width: 58ch;
+  }
 
-                <p> Previously, I have been a Sr. AI Scientist at GE Healthcare (Bengaluru) were I worked on medical imaging (MRI) technologies. I received my PhD from <a href="https://cse.umn.edu/cs">University of Minnesota, TC</a> working with <a href="https://cse.umn.edu/cs/jaideep-srivastava">Prof. Jaideep Srivastava</a> on  generative AI for scientific imaging. After which I worked as postdoctoral researcher at <a href="https://www.physics.ucla.edu/research/imaging/">UCLA (Coherent Imaging Group)</a> with <a href="https://www.pa.ucla.edu/faculty-websites/miao.html">Prof. John Miao</a>.
-                </p>
+  /* Research interests chips */
+  .research-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    list-style: none;
+  }
+  .research-tags li {
+    background: var(--navy);
+    color: rgba(255,255,255,.9);
+    font-size: .78rem;
+    padding: .25rem .65rem;
+    letter-spacing: .02em;
+    line-height: 1.4;
+  }
 
-                <div style="background-color: #4CAF50; color: white; padding: 20px; text-align: center;">
-                <p class="note">
-                <strong>Note:</strong> <br> 
-                We are looking for highly motivated students to join our lab to work on various problems related to computer vision, imaging, and LLMs over Summer and Fall 2025. <br>Interested candidates can email me directly with their CV.
-                </p>
-                </div>
+  /* ── Recruitment Banner ──────────────────────────────────────── */
+  .recruit-banner {
+    background: var(--amber-lt);
+    border-left: 4px solid var(--amber);
+    padding: 1.25rem 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .recruit-banner__heading {
+    font-family: var(--ff-serif);
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: .5rem;
+  }
+  .recruit-banner p { font-size: .92rem; color: var(--body); line-height: 1.65; }
+  .recruit-banner a { color: var(--amber); font-weight: 600; }
 
-              </td>
+  /* ── Funding strip ───────────────────────────────────────────── */
+  .funding-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--navy);
+    color: rgba(255,255,255,.85);
+    margin-bottom: 2.5rem;
+    align-items: center;
+  }
+  .funding-stat { text-align: center; }
+  .funding-stat__num {
+    font-family: var(--ff-serif);
+    font-size: 1.5rem;
+    color: #fff;
+    display: block;
+  }
+  .funding-stat__label { font-size: .78rem; color: rgba(255,255,255,.65); }
+  .funding-divider {
+    width: 1px;
+    height: 2.5rem;
+    background: rgba(255,255,255,.2);
+    flex-shrink: 0;
+  }
+  .funding-desc { font-size: .84rem; color: rgba(255,255,255,.75); flex: 1; min-width: 200px; line-height: 1.55; }
 
-              <td style="padding:2.5%;width:40%;max-width:40%">
-                <a href="images2/raunak_pic_rott.jpg">
-                  <img style="width:100%; max-width:100%; border-radius: 50%; object-fit: cover;" alt="profile photo" src="images2/raunak_pic_closeup.jpg" class="hoverZoomLink">
-                </a>
-                <p class="social-icons">
-                  <a href="mailto:raunakm@goa.bits-pilani.ac.in"><i class="fas fa-envelope"></i></a>
-                  <a href="data2/Raunak_Manekar_CV.pdf"><i class="fas fa-file-pdf"></i></a>
-                  <a href="https://scholar.google.com/citations?user=ct6Om_wAAAAJ&hl=en" title="Google Scholar"><i class="fab fa-google"></i></a>
-                  <a href="https://www.linkedin.com/in/raunak-manekar-60378860"><i class="fab fa-linkedin"></i></a>
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
+  /* ── Sections ────────────────────────────────────────────────── */
+  .section {
+    margin-top: 2.75rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .section:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
 
+  .section__heading {
+    font-family: var(--ff-serif);
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    padding-bottom: .4rem;
+    border-bottom: 2px solid var(--amber);
+    display: inline-block;
+  }
 
-          <!-- News Section -->
-          <table>
-            <h2>News</h2>
-            <ul>
-              <li><strong>April 2025:</strong> [upcoming] Presenting an SPS journal paper at ICASSP 2025 in Hyderabad.</li>
-              <li><strong>March 2025:</strong> Thrilled to start as Asst. Professor at BITS-Pilani Goa Campus.</li>
-              <li><strong>October 2024:</strong> Thrilled to start as Sr. AI scientist at GE Healthcare, Bengaluru.</li>
-              <li><strong>July 2024:</strong> Paper accepted at IEEE Transactions on Image Processing (IF:10.4).</li>
-              <li><strong>December 2024:</strong> Presented a new paper at Neurips workshop ML4PS at New Orleans, USA.</li>
-            </ul>
-          </table>
+  /* ── News ────────────────────────────────────────────────────── */
+  /* To add a news item: copy one <li> block and edit date + text */
+  .news-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .news-list li {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: .75rem;
+    font-size: .9rem;
+    line-height: 1.55;
+  }
+  .news-date {
+    color: var(--muted);
+    font-size: .82rem;
+    padding-top: .1rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
 
+  /* ── Publications ────────────────────────────────────────────── */
+  /* To add a publication: copy one <li.pub> block and edit fields */
+  .pub-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .pub {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .pub__thumb {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    background: #eee;
+    flex-shrink: 0;
+  }
+  .pub__thumb-placeholder {
+    width: 72px;
+    height: 72px;
+    background: var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid #c8d0da;
+  }
+  .pub__thumb-placeholder svg { opacity: .4; }
+  .pub__body { display: flex; flex-direction: column; gap: .2rem; }
+  .pub__title {
+    font-size: .93rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+  .pub__authors { font-size: .82rem; color: var(--muted); line-height: 1.4; }
+  .pub__venue { font-size: .82rem; color: var(--slate); font-style: italic; }
+  .pub__links { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .2rem; }
+  .pub__link {
+    font-size: .78rem;
+    color: var(--amber);
+    text-decoration: none;
+    border: 1px solid var(--amber);
+    padding: .15rem .5rem;
+    letter-spacing: .02em;
+    line-height: 1.4;
+  }
+  .pub__link:hover { background: var(--amber); color: #fff; }
+  .pub__link:focus-visible { outline-color: var(--focus); }
 
+  /* ── Compact sections (Background, Teaching, etc.) ───────────── */
+  .compact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 3rem;
+  }
+  .compact-block__heading {
+    font-size: .78rem;
+    letter-spacing: .08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+    font-weight: 600;
+  }
+  .compact-block ul { list-style: none; display: flex; flex-direction: column; gap: .3rem; }
+  .compact-block li { font-size: .88rem; color: var(--body); line-height: 1.5; }
+  .compact-block li::before { content: ""; }
+  .compact-block .role { font-weight: 600; color: var(--navy); }
+  .compact-block .place { color: var(--slate); }
+  .compact-block .year { color: var(--muted); font-size: .82rem; }
 
-          <!-- Publications Section -->
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-            <tbody>
-              <h2 class="section-heading">Publications</h2>
+  /* ── Footer ──────────────────────────────────────────────────── */
+  .site-footer {
+    margin-top: 3.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: .8rem;
+    color: var(--muted);
+  }
+  .site-footer a { color: var(--muted); }
 
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle" >
-                <img src="images2/thumbnail-Implicit-gen-priors.png" alt="Boundary_png" style="border-style: none; width:100%" >
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://arxiv.org/pdf/2402.17745">
-                  <span class="papertitle">Low-light phase retrieval with implicit generative priors</span>
-                </a>
-                <br>
-                <strong>Raunak Manekar</strong>,
-                <em>Elisa Negrini</em>,
-                <em>Minh Pham</em>,
-                <em>Daniel Jacobs</em>,
-                <em>Jaideep Srivastava</em>,
-                <em>Stanley J. Osher</em>,
-                <em>Jianwei Miao</em>,
-                <br>
-                <em>Transactions on Image Processing (TIP) </em>, 2024
-                <br>
-                <!-- <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">supplement</a>  -->
-                <p>Using deep learning priors for high-SNR phase retrieval at very low photon counts without any training data</p>
-              </td>
-            </tr>
+  /* ── Responsive ──────────────────────────────────────────────── */
+  @media (max-width: 680px) {
+    :root { --side-w: 160px; }
 
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle" >
-                <img src="images2/lodip_thumbnail.png" alt="Boundary_png" style="border-style: none; width:100%" >
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://ml4physicalsciences.github.io/2023/files/NeurIPS_ML4PS_2023_174.pdf">
-                  <span class="papertitle">LoDIP: Low-dose phase retrieval with deep image prior</span>
-                </a>
-                <br>
-                <strong>Raunak Manekar</strong>,
-                <em>Elisa Negrini</em>,
-                <em>Minh Pham</em>,
-                <em>Daniel Jacobs</em>,
-                <em>Jaideep Srivastava</em>,
-                <em>Stanley J. Osher</em>,
-                <em>Jianwei Miao</em>,
-                <br>
-                <em>Machine Learning and the Physical Sciences Workshop, NeurIPS</em>, 2023
-                <br>
-                <!-- <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">supplement</a>  -->
-                <p>Unsupervised, single-image technique for phase retrieval at very low photon counts</p>
-              </td>
-            </tr>
+    .profile {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0 1.75rem;
+    }
+    .profile__photo-col {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    .profile__photo { width: 110px; height: 110px; flex-shrink: 0; aspect-ratio: auto; }
+    .profile__contact { margin-top: .25rem; }
 
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle" >
-                <img src="images2/sqroot_symm.png" alt="Boundary_png" style="border-style: none; width:100%" >
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">
-                  <span class="papertitle">Breaking Symmetries in Data-Driven Phase Retrieval</span>
-                </a>
-                <br>
-                <strong>Raunak Manekar</strong>,
-                <em>Kshitij Tayal</em>,
-                <em>Zhong Zhuang</em>,
-                <em>Chieh-Hsin Lai</em>,
-                <em>Vipin Kumar</em>,
-                <em>Ju Sun</em>,
-                <br>
-                <em>Computational Optical Sensing and Imaging </em>, 2021
-                <br>
-                <!-- <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">supplement</a>  -->
-                <p>Supervised learning for inverse problems requires a careful handling of the symmetries.</p>
-              </td>
-            </tr>
+    .compact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 
-          <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle" >
-                <img src="images2/symm_7.png" alt="Boundary_png" style="border-style: none; width:90%" >
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://openreview.net/pdf/75daa84453c87b155c6d6702b9366c9c44c3ec5e.pdf">
-                  <span class="papertitle">Deep Learning Initialized Phase Retrieval</span>
-                </a>
-                <br>
-                <strong>Raunak Manekar</strong>,
-                <em>Zhong Zhuang</em>,
-                <em>Kshitij Tayal</em>,
-                <em>Vipin Kumar</em>,
-                <em>Ju Sun</em>,
-                <br>
-                <em>NeurIPS 2020 Workshop on Deep Learning and Inverse Problems </em>, 2020
-                <br>
-                <!-- <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">supplement</a>  -->
-                <p>An unsupervised data-driven technique for practical phase retrieval.</p>
-              </td>
-            </tr>
+    .site-nav__name { display: none; }
+    .site-nav__links a { padding: .75rem .6rem; font-size: .78rem; }
 
-          <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle" >
-                <img src="images2/passive_loss.png" alt="Boundary_png" style="border-style: none; width:100%" >
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://sunju.org/pub/ICML20-WS-DL4FPR.pdf">
-                  <span class="papertitle">End-to-end learning for phase retrieval</span>
-                </a>
-                <br>
-                <strong>Raunak Manekar</strong>,
-                <em>Kshitij Tayal</em>,
-                <em>Vipin Kumar</em>,
-                <em>Ju Sun</em>,
-                <br>
-                <em>ICML workshop on ML Interpretability for Scientific Discovery </em>, 2020
-                <br>
-                <!-- <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">supplement</a>  -->
-                <p>Exploring dataset-bias in end-to-end learning for phase retrieval</p>
-              </td>
-            </tr>
+    .news-list li { grid-template-columns: 80px 1fr; }
 
-          <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle" >
-                <img src="images2/crystals.png" alt="Boundary_png" style="border-style: none; width:100%" >
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://arxiv.org/abs/2106.04812">
-                  <span class="papertitle">Phase Retrieval using Single-Instance Deep Generative Prior</span>
-                </a>
-                <br>
-                <em>Kshitij Tayal</em>,
-                <strong>Raunak Manekar</strong>,
-                <em>Zhong Zhuang</em>,
-                <em>David Yang</em>,
-                <em>Vipin Kumar</em>,
-                <em>Felix Hofmann</em>,
-                <em>Ju Sun</em>,
-                <br>
-                <em>Optics and Photonics for Sensing the Environment.OSA </em>, 2021
-                <br>
-                <!-- <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">supplement</a>  -->
-                <p>Unsupervised single-instance method for phase retrieval</p>
-              </td>
-            </tr>
+    .funding-strip { gap: 1rem; padding: 1rem; }
+    .funding-divider { display: none; }
 
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle" >
-                <img src="images2/hsi_thumbnail.png" alt="Boundary_png" style="border-style: none; width:100%" >
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w13/Koundinya_2D-3D_CNN_Based_CVPR_2018_paper.pdf">
-                  <span class="papertitle">2D-3D CNN based architectures for spectral reconstruction from RGB images</span>
-                </a>
-                <br>
-                <em>Sriharsha Koundinya</em>,
-                <em>Himanshu Sharma</em>,
-                <em>Manoj Sharma</em>,
-                <em>Avinash Upadhyay</em>,
-                <strong>Raunak Manekar</strong>,
-                <em>Rudrabha Mukhopadhyay</em>,
-                <em>Abhijit Karmakar</em>,
-                <em>Santanu Chaudhury</em>,
-                <br>
-                <em>Proceedings of the IEEE conference on computer vision and pattern recognition workshops</em>, 2018
-                <br>
-                <!-- <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">supplement</a>  -->
-                <p>Hyperspectral Information restoration from RGB images</p>
-              </td>
-            </tr>
+    .pub { grid-template-columns: 60px 1fr; }
+    .pub__thumb, .pub__thumb-placeholder { width: 60px; height: 60px; }
+  }
 
+  @media (max-width: 420px) {
+    .profile__photo-col { flex-direction: column; }
+    .news-list li { grid-template-columns: 1fr; gap: .15rem; }
+    .pub { grid-template-columns: 1fr; }
+    .pub__thumb, .pub__thumb-placeholder { display: none; }
+  }
 
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle" >
-                <img src="images2/cnn_ear_thumbnail.png" alt="Boundary_png" style="border-style: none; width:100%" >
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w13/Koundinya_2D-3D_CNN_Based_CVPR_2018_paper.pdf">
-                  <span class="papertitle">Convolutional neural network-based human identification using outer ear images</span>
-                </a>
-                <br>
-                <em>H Sinha</em>
-                <strong>Raunak Manekar</strong>,
-                <em>Yash Sinha</em>,
-                <em>P K Ajmera</em>,
-                <br>
-                <em>Soft Computing for Problem Solving: SocProS</em>, 2017
-                <br>
-                <!-- <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">supplement</a>  -->
-                <p> </p>
-              </td>
-            </tr>          
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
 
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle" >
-                <img src="images2/360_thumbnail.png" alt="Boundary_png" style="border-style: none; width:100%" >
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://link.springer.com/chapter/10.1007/978-981-32-9291-8_33">
-                  <span class="papertitle">Activity recognition for indoor fall detection in 360-degree videos using deep learning techniques</span>
-                </a>
-                <br>
-                <em>Dhiraj</em>
-                <strong>Raunak Manekar</strong>,
-                <em>Sumeet Saurav</em>,
-                <em>Somsukla Maiti</em>,
-                <em>Sanjay Singh</em>,
-                <em>Santanu Chaudhury</em>,
-                <em>Neeraj</em>,
-                <em>Ravi Kumar</em>,
-                <em>Kamal Chaudhary</em>,
-                <br>
-                <em>Proceedings of 3rd International Conference on Computer Vision and Image Processing: CVIP</em>, 2018
-                <br>
-                <!-- <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4">supplement</a>  -->
-                <p> </p>
-              </td>
-            </tr>          
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-            <tr>
-              <td>
-                <h2>Service</h2>
-              </td>
-            </tr>
-          </tbody></table>
-          <table width="100%" align="center" border="0" cellpadding="20"><tbody>
-            
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle"><img src="images/cvf.jpg"></td>
-              <td width="75%" valign="center">
-                <em>Reviewer, CVPR 2022, ECCV 2022</em>
-                <br>
-                <em>Reviewer, Neurips 2022,2023 ICLR 2022 (Highlighted reviewer)</em>
-                <br>
-                <em>Reviewer, AAAI '22 (Intl Workshop on Health Intelligence)</em>
-                <br>
-                <em>Reviewer, Springer Autonomous Robots Journal</em>
-              </td>
-            </tr>
+<!-- ── Navigation ───────────────────────────────────────────────── -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav__inner">
+    <span class="site-nav__name">Raunak Manekar</span>
+    <ul class="site-nav__links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#join">Join</a></li>
+    </ul>
+  </div>
+</nav>
 
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-            <tr>
-              <td>
-                <h2>Awards</h2>
-              </td>
-            </tr>
-          </tbody></table>
-          <table width="100%" align="center" border="0" cellpadding="20"><tbody>
-            
-            <tr>
-              <!-- <td style="padding:20px;width:25%;vertical-align:middle"></td> -->
-              <td width="75%" valign="center">
-                <em>Travel award- ICML '17(Sydney)</em>
-                <br>
-                <em>Travel award- NeurIPS '22(New Orleans)</em>
-                <br>
-                <em href="https://iclr.cc/Conferences/2022/Reviewers">ICLR '22 Highlighted Reviewer</em>
-                <br>
-              </td>
-            </tr>
+<main id="main-content">
+<div class="page-wrap">
 
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-            <tr>
-              <td>
-                <h2>Teaching</h2>
-              </td>
-            </tr>
-          </tbody></table>
-          <table width="100%" align="center" border="0" cellpadding="20"><tbody>
-            
-            <tr>
-              <!-- <td style="padding:20px;width:25%;vertical-align:middle"></td> -->
-              <td width="75%" valign="center">
-                <em> <strong>Teaching assistant</strong></em>
-                <br>
-                <br>
-                <em>CSCI 5521: Machine Learning Fundamentals</em>
-                <br>
-                <em>CSCI 5523: Data Mining</em>
-                <br>
-                <em>CSCI 1933: Intro to Data Structures and Algorithms</em>
-                <br>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </body>
+  <!-- ── Profile Header ─────────────────────────────────────────── -->
+  <header class="profile" id="about">
+    <div class="profile__photo-col">
+      <img
+        src="images2/raunak_pic_closeup.jpg"
+        alt="Portrait of Raunak Manekar"
+        class="profile__photo"
+        width="220" height="220"
+      >
+      <!-- Contact details -->
+      <ul class="profile__contact" aria-label="Contact and links">
+        <li>
+          <!-- email icon -->
+          <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="2" y="4" width="16" height="12" rx="1.5" stroke="#5F7080" stroke-width="1.5"/>
+            <path d="M2 7l8 5 8-5" stroke="#5F7080" stroke-width="1.5"/>
+          </svg>
+          <a href="mailto:raunakm@goa.bits-pilani.ac.in" aria-label="Email Raunak Manekar">raunakm@goa.bits-pilani.ac.in</a>
+        </li>
+        <li>
+          <!-- doc icon -->
+          <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="4" y="2" width="12" height="16" rx="1" stroke="#5F7080" stroke-width="1.5"/>
+            <path d="M7 7h6M7 10h6M7 13h4" stroke="#5F7080" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <a href="https://raunakmanekar.github.io/data2/Raunak_Manekar_CV.pdf" target="_blank" rel="noopener" aria-label="Curriculum Vitae (PDF, opens in new tab)">Curriculum Vitae</a>
+        </li>
+        <li>
+          <!-- scholar icon -->
+          <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="8" stroke="#5F7080" stroke-width="1.5"/>
+            <path d="M10 6v4l3 2" stroke="#5F7080" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <a href="https://scholar.google.com/citations?user=ct6Om_wAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar profile (opens in new tab)">Google Scholar</a>
+        </li>
+        <li>
+          <!-- linkedin icon -->
+          <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="16" height="16" rx="2" stroke="#5F7080" stroke-width="1.5"/>
+            <path d="M6 9v5M6 7v.5M10 14v-3a2 2 0 014 0v3M10 9v5" stroke="#5F7080" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <a href="https://www.linkedin.com/in/raunak-manekar-60378860" target="_blank" rel="noopener" aria-label="LinkedIn profile (opens in new tab)">LinkedIn</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="profile__info">
+      <h1 class="profile__name">Raunak Manekar</h1>
+      <p class="profile__title">
+        Assistant Professor<br>
+        Department of Computer Science and Information Systems<br>
+        BITS Pilani, Goa Campus, India
+      </p>
+
+      <p class="profile__bio">
+        Raunak works at the intersection of computer vision, generative AI, and computational imaging,
+        developing learning-based approaches to visual inverse problems in science and engineering.
+        Before joining BITS Goa, he was a Senior AI Scientist at GE Healthcare in Bengaluru,
+        working on MRI technologies. He earned his PhD in Computer Science from the University of
+        Minnesota Twin Cities under <a href="https://www-users.cse.umn.edu/~jaideep/" target="_blank" rel="noopener">Prof. Jaideep Srivastava</a>,
+        then worked as a postdoctoral researcher in
+        <a href="https://www.physics.ucla.edu/research/imaging/" target="_blank" rel="noopener">Prof. John Miao's Coherent Imaging Group</a>
+        at UCLA.
+      </p>
+
+      <!-- Research interest tags -->
+      <ul class="research-tags" aria-label="Research areas">
+        <li>3D Vision &amp; Persistent Mapping</li>
+        <li>Autonomous Driving</li>
+        <li>Robotic Teleoperation</li>
+        <li>Computational Imaging</li>
+        <li>Generative AI</li>
+        <li>Visual Inverse Problems</li>
+        <li>Medical Imaging</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ── Recruitment Banner ──────────────────────────────────────── -->
+  <section id="join" aria-labelledby="join-heading">
+    <div class="recruit-banner">
+      <h2 class="recruit-banner__heading" id="join-heading">Prospective PhD &amp; Undergraduate Students</h2>
+      <p>
+        I am actively looking for motivated PhD students and BITS Pilani undergraduate students to join
+        research projects at the frontier of computer vision and AI — from 3D scene understanding and
+        autonomous systems to generative models and AI for science. If you are passionate about
+        building real systems and publishing impactful research, I encourage you to get in touch.
+        BITS Goa offers a vibrant research environment and a remarkable setting.
+      </p>
+      <p style="margin-top:.6rem;">
+        <strong>Interested in a PhD or research project?</strong>
+        <a href="mailto:raunakm@goa.bits-pilani.ac.in">Email Raunak</a> with your CV and a short note about your interests.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Research ────────────────────────────────────────────────── -->
+  <section class="section" id="research" aria-labelledby="research-heading">
+    <h2 class="section__heading" id="research-heading">Research</h2>
+
+    <!-- Funding strip -->
+    <div class="funding-strip" aria-label="Funding highlights">
+      <div class="funding-stat">
+        <span class="funding-stat__num">₹1.2Cr+</span>
+        <span class="funding-stat__label">Research funding</span>
+      </div>
+      <div class="funding-divider" aria-hidden="true"></div>
+      <div class="funding-stat">
+        <span class="funding-stat__num">3</span>
+        <span class="funding-stat__label">Funded projects</span>
+      </div>
+      <div class="funding-divider" aria-hidden="true"></div>
+      <p class="funding-desc">
+        Funded by ANRF, Government of India (PM-ECRG), and industry.
+        Collaborators include researchers at NASA, CMU, University of Minnesota, and NUS.
+      </p>
+    </div>
+
+    <!-- Research directions -->
+    <dl style="display:flex; flex-direction:column; gap:1.1rem;">
+      <div>
+        <dt style="font-weight:600; color:var(--navy); font-size:.95rem; margin-bottom:.2rem;">
+          3D Vision for Persistent Mapping
+        </dt>
+        <dd style="font-size:.9rem; color:var(--body); line-height:1.65; padding-left:1rem; border-left:2px solid var(--rule); max-width:60ch;">
+          Developing algorithms for long-horizon, persistent scene representations in robotics and
+          agentic vision — enabling agents to build and maintain reliable 3D maps of dynamic environments
+          over extended time horizons.
+        </dd>
+      </div>
+      <div>
+        <dt style="font-weight:600; color:var(--navy); font-size:.95rem; margin-bottom:.2rem;">
+          Vision for Autonomous Driving &amp; Robotic Teleoperation
+        </dt>
+        <dd style="font-size:.9rem; color:var(--body); line-height:1.65; padding-left:1rem; border-left:2px solid var(--rule); max-width:60ch;">
+          Research in perception and predictive display systems that make autonomous vehicles and
+          remotely operated robots safer and more reliable, with ANRF PM-ECRG funding supporting
+          this direction.
+        </dd>
+      </div>
+      <div>
+        <dt style="font-weight:600; color:var(--navy); font-size:.95rem; margin-bottom:.2rem;">
+          AI for Science &amp; Engineering: Computational Imaging
+        </dt>
+        <dd style="font-size:.9rem; color:var(--body); line-height:1.65; padding-left:1rem; border-left:2px solid var(--rule); max-width:60ch;">
+          Learning-based solutions to visual inverse problems — including phase retrieval, image
+          reconstruction, and low-dose imaging — with applications in medical imaging, microscopy,
+          and sensing.
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ── News ───────────────────────────────────────────────────── -->
+  <section class="section" id="news" aria-labelledby="news-heading">
+    <h2 class="section__heading" id="news-heading">News</h2>
+    <!-- ════ NEWS LIST — edit here to add or update items ════════ -->
+    <!-- Newest first. Format: <li><span class="news-date">Month YYYY</span><span>Text.</span></li> -->
+    <ul class="news-list">
+
+      <li>
+        <span class="news-date">Oct 2026</span>
+        <span>Industry research project approved on <em>Persistent Memory for Humanoid Agents</em> in collaboration with <a href="https://www.smith-nephew.com/" target="_blank" rel="noopener">Smith&amp;Nephew</a>, a Boston-based medical technology company.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Jun 2026</span>
+        <span>Awarded the <strong>PM-ECRG grant from ANRF</strong>, Government of India, supporting research in autonomous driving vehicles and robotic teleoperation.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Jun 2026</span>
+        <span>Delivered an invited talk on <em>Generative AI and Foundation Models for 3D Vision</em>.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Jun 2026</span>
+        <span>BITS Pilani, Goa Campus hosted the <strong>3D Vision Summer School (3DVSS)</strong>.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Jan 2026</span>
+        <span>Taught Deep Learning through the course <em>Foundations to Frontier</em>, designed around the foundation-model era of AI.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Oct 2025</span>
+        <span>Received the <strong>NFSG research grant</strong>.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Apr 2025</span>
+        <span>Presented a paper at <strong>ICASSP 2025</strong>.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Mar 2025</span>
+        <span>Joined <strong>BITS Pilani, Goa Campus</strong> as Assistant Professor in the Department of Computer Science and Information Systems.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Dec 2024</span>
+        <span>Presented a paper at the <strong>NeurIPS Machine Learning for Physical Sciences (ML4PS) Workshop</strong> in New Orleans, USA.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Oct 2024</span>
+        <span>Joined <strong>GE Healthcare</strong>, Bengaluru as Senior AI Scientist working on MRI technologies.</span>
+      </li>
+
+      <li>
+        <span class="news-date">Jul 2024</span>
+        <span>Paper accepted in <strong>IEEE Transactions on Image Processing</strong>.</span>
+      </li>
+
+    </ul>
+    <!-- ════ END NEWS LIST ═══════════════════════════════════════ -->
+  </section>
+
+  <!-- ── Publications ───────────────────────────────────────────── -->
+  <section class="section" id="publications" aria-labelledby="pub-heading">
+    <h2 class="section__heading" id="pub-heading">Publications</h2>
+    <!-- ════ PUBLICATION LIST — edit here to add or update ═══════ -->
+    <!-- Each <li class="pub"> has: thumb, title, authors, venue, links -->
+    <ul class="pub-list">
+
+      <!-- 1. Teleoperation — current research direction, shown first -->
+      <li class="pub">
+        <div class="pub__thumb-placeholder" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="18" height="18" rx="1" stroke="#5F7080" stroke-width="1.5"/>
+            <path d="M3 9h18M9 9v12" stroke="#5F7080" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="pub__body">
+          <span class="pub__title">Predictive Display for Teleoperation Based on 3D Reconstruction Using Lidar-Camera Fusion</span>
+          <span class="pub__authors">G. Sharma, R. Manekar, R. Rajamani</span>
+          <span class="pub__venue">IEEE Transactions on Intelligent Transportation Systems, 26(9), 13399–13411, 2025</span>
+          <div class="pub__links">
+            <a href="https://ieeexplore.ieee.org/document/11000445/" target="_blank" rel="noopener" class="pub__link" aria-label="Publisher page for teleoperation paper">Publisher</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 2. TIP 2024 — implicit generative priors -->
+      <li class="pub">
+        <img src="images2/thumbnail-Implicit-gen-priors.png" alt="Thumbnail for low-light phase retrieval paper" class="pub__thumb" width="72" height="72" loading="lazy">
+        <div class="pub__body">
+          <span class="pub__title">Low-Light Phase Retrieval with Implicit Generative Priors</span>
+          <span class="pub__authors">Raunak Manekar, Elisa Negrini, Minh Pham, Daniel Jacobs, Jaideep Srivastava, Stanley J. Osher, Jianwei Miao</span>
+          <span class="pub__venue">IEEE Transactions on Image Processing, 2024</span>
+          <div class="pub__links">
+            <a href="https://arxiv.org/pdf/2402.17745" target="_blank" rel="noopener" class="pub__link" aria-label="PDF for low-light phase retrieval paper">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 3. NeurIPS ML4PS 2023 — LoDIP -->
+      <li class="pub">
+        <img src="images2/lodip_thumbnail.png" alt="Thumbnail for LoDIP paper" class="pub__thumb" width="72" height="72" loading="lazy">
+        <div class="pub__body">
+          <span class="pub__title">LoDIP: Low-Dose Phase Retrieval with Deep Image Prior</span>
+          <span class="pub__authors">Raunak Manekar et al.</span>
+          <span class="pub__venue">NeurIPS Workshop on Machine Learning for Physical Sciences (ML4PS), 2023</span>
+          <div class="pub__links">
+            <a href="https://ml4physicalsciences.github.io/2023/files/NeurIPS_ML4PS_2023_174.pdf" target="_blank" rel="noopener" class="pub__link" aria-label="PDF for LoDIP paper">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 4. COSI 2021 — Breaking Symmetries -->
+      <li class="pub">
+        <img src="images2/sqroot_symm.png" alt="Thumbnail for Breaking Symmetries paper" class="pub__thumb" width="72" height="72" loading="lazy">
+        <div class="pub__body">
+          <span class="pub__title">Breaking Symmetries in Data-Driven Phase Retrieval</span>
+          <span class="pub__authors">Raunak Manekar et al.</span>
+          <span class="pub__venue">Computational Optical Sensing and Imaging (COSI), 2021</span>
+          <div class="pub__links">
+            <a href="https://opg.optica.org/abstract.cfm?uri=COSI-2021-CTh4A.4" target="_blank" rel="noopener" class="pub__link" aria-label="Publisher page for Breaking Symmetries paper">Link</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 5. NeurIPS 2020 Workshop — Deep Learning Initialized Phase Retrieval -->
+      <li class="pub">
+        <img src="images2/symm_7.png" alt="Thumbnail for Deep Learning Initialized Phase Retrieval paper" class="pub__thumb" width="72" height="72" loading="lazy">
+        <div class="pub__body">
+          <span class="pub__title">Deep Learning Initialized Phase Retrieval</span>
+          <span class="pub__authors">Raunak Manekar et al.</span>
+          <span class="pub__venue">NeurIPS Workshop on Deep Learning and Inverse Problems, 2020</span>
+          <div class="pub__links">
+            <a href="https://openreview.net/pdf/75daa84453c87b155c6d6702b9366c9c44c3ec5e.pdf" target="_blank" rel="noopener" class="pub__link" aria-label="PDF for Deep Learning Initialized Phase Retrieval paper">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 6. ICML 2020 Workshop — End-to-end phase retrieval -->
+      <li class="pub">
+        <img src="images2/passive_loss.png" alt="Thumbnail for end-to-end phase retrieval paper" class="pub__thumb" width="72" height="72" loading="lazy">
+        <div class="pub__body">
+          <span class="pub__title">End-to-End Learning for Phase Retrieval</span>
+          <span class="pub__authors">Raunak Manekar et al.</span>
+          <span class="pub__venue">ICML Workshop on Machine Learning Interpretability for Scientific Discovery, 2020</span>
+          <div class="pub__links">
+            <a href="https://sunju.org/pub/ICML20-WS-DL4FPR.pdf" target="_blank" rel="noopener" class="pub__link" aria-label="PDF for end-to-end phase retrieval paper">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 7. Optics 2021 — Single-Instance Deep Generative Prior -->
+      <li class="pub">
+        <img src="images2/crystals.png" alt="Thumbnail for single-instance generative prior paper" class="pub__thumb" width="72" height="72" loading="lazy">
+        <div class="pub__body">
+          <span class="pub__title">Phase Retrieval Using Single-Instance Deep Generative Prior</span>
+          <span class="pub__authors">Raunak Manekar et al.</span>
+          <span class="pub__venue">Optics and Photonics for Sensing the Environment, 2021</span>
+          <div class="pub__links">
+            <a href="https://arxiv.org/abs/2106.04812" target="_blank" rel="noopener" class="pub__link" aria-label="arXiv page for single-instance generative prior paper">arXiv</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 8. CVPR Workshops 2018 — Spectral reconstruction -->
+      <li class="pub">
+        <img src="images2/hsi_thumbnail.png" alt="Thumbnail for spectral reconstruction paper" class="pub__thumb" width="72" height="72" loading="lazy">
+        <div class="pub__body">
+          <span class="pub__title">2D-3D CNN Based Architectures for Spectral Reconstruction from RGB Images</span>
+          <span class="pub__authors">S. Koundinya, H. Sharma, M. Sharma, A. Upadhyay, R. Manekar, R. Mukhopadhyay, A. Karmakar, S. Chaudhury</span>
+          <span class="pub__venue">CVPR Workshops, 2018</span>
+          <div class="pub__links">
+            <a href="https://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w13/Koundinya_2D-3D_CNN_Based_CVPR_2018_paper.pdf" target="_blank" rel="noopener" class="pub__link" aria-label="PDF for spectral reconstruction paper">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 9. CVIP 2018 — Fall detection -->
+      <li class="pub">
+        <img src="images2/360_thumbnail.png" alt="Thumbnail for fall detection paper" class="pub__thumb" width="72" height="72" loading="lazy">
+        <div class="pub__body">
+          <span class="pub__title">Activity Recognition for Indoor Fall Detection in 360-Degree Videos Using Deep Learning Techniques</span>
+          <span class="pub__authors">Raunak Manekar et al.</span>
+          <span class="pub__venue">CVIP Proceedings, Springer, 2018</span>
+          <div class="pub__links">
+            <a href="https://link.springer.com/chapter/10.1007/978-981-32-9291-8_33" target="_blank" rel="noopener" class="pub__link" aria-label="Publisher page for fall detection paper">Link</a>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+    <!-- ════ END PUBLICATION LIST ════════════════════════════════ -->
+  </section>
+
+  <!-- ── Background, Teaching, Service, Awards ──────────────────── -->
+  <section class="section" id="background" aria-labelledby="background-heading">
+    <h2 class="section__heading" id="background-heading">Background</h2>
+
+    <div class="compact-grid">
+
+      <!-- Positions -->
+      <div class="compact-block">
+        <h3 class="compact-block__heading">Positions</h3>
+        <ul>
+          <li>
+            <span class="role">Assistant Professor</span><br>
+            <span class="place">BITS Pilani, Goa Campus</span>
+            <span class="year">— 2025–present</span>
+          </li>
+          <li style="margin-top:.5rem;">
+            <span class="role">Senior AI Scientist</span><br>
+            <span class="place">GE Healthcare, Bengaluru</span>
+            <span class="year">— 2024–2025</span>
+          </li>
+          <li style="margin-top:.5rem;">
+            <span class="role">Postdoctoral Researcher</span><br>
+            <span class="place">Coherent Imaging Group, UCLA</span><br>
+            <span class="place">Advisor: Prof. John Miao</span>
+            <span class="year">— 2023–2024</span>
+          </li>
+          <li style="margin-top:.5rem;">
+            <span class="role">PhD, Computer Science</span><br>
+            <span class="place">University of Minnesota Twin Cities</span><br>
+            <span class="place">Advisor: Prof. Jaideep Srivastava</span>
+            <span class="year">— 2018–2023</span>
+          </li>
+          <li style="margin-top:.5rem;">
+            <span class="role">B.E. (Hons.) Electronics and Instrumentation</span><br>
+            <span class="place">BITS Pilani</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Teaching -->
+      <div class="compact-block">
+        <h3 class="compact-block__heading">Teaching at BITS Pilani</h3>
+        <ul>
+          <li>Deep Learning</li>
+          <li>Computational Thinking and Programming</li>
+        </ul>
+
+        <h3 class="compact-block__heading" style="margin-top:1rem;">Teaching at UMN</h3>
+        <ul>
+          <li>CSCI 5521 Machine Learning Fundamentals</li>
+          <li>CSCI 5523 Data Mining</li>
+          <li>CSCI 1933 Introduction to Data Structures and Algorithms</li>
+        </ul>
+      </div>
+
+      <!-- Service -->
+      <div class="compact-block">
+        <h3 class="compact-block__heading">Academic Service</h3>
+        <ul>
+          <li>Reviewer, IEEE Transactions on Image Processing</li>
+          <li>Reviewer, ARR (October 2026 cycle)</li>
+          <li>Reviewer, CVPR 2022; ECCV 2022</li>
+          <li>Reviewer, NeurIPS 2022, 2023</li>
+          <li><strong>Highlighted Reviewer</strong>, ICLR 2022</li>
+          <li>Reviewer, AAAI 2022 Workshop on Health Intelligence</li>
+          <li>Reviewer, Springer Autonomous Robots</li>
+        </ul>
+      </div>
+
+      <!-- Awards -->
+      <div class="compact-block">
+        <h3 class="compact-block__heading">Awards &amp; Honors</h3>
+        <ul>
+          <li>ICLR 2022 Highlighted Reviewer</li>
+          <li>NeurIPS 2022 Travel Award — New Orleans</li>
+          <li>ICML 2017 Travel Award — Sydney</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /.page-wrap -->
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="page-wrap" style="padding-bottom:0;">
+    <p>
+      Raunak Manekar &middot;
+      Department of Computer Science and Information Systems &middot;
+      BITS Pilani, Goa Campus &middot;
+      <a href="mailto:raunakm@goa.bits-pilani.ac.in">raunakm@goa.bits-pilani.ac.in</a>
+    </p>
+    <!-- TODO: update year in copyright automatically or manually each year -->
+    <p style="margin-top:.4rem;">Last updated 2026.</p>
+  </div>
+</footer>
+
+</body>
 </html>
-
-
