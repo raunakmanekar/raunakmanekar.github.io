@@ -338,6 +338,106 @@
   .pub__link:hover { background: var(--amber); color: #fff; }
   .pub__link:focus-visible { outline-color: var(--focus); }
 
+  /* ── Stat boxes ──────────────────────────────────────────────── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .75rem;
+    margin-bottom: 1.25rem;
+  }
+  .stat-box {
+    padding: 1.1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+  }
+  .stat-box--navy {
+    background: var(--navy);
+  }
+  .stat-box__num {
+    font-family: var(--ff-serif);
+    font-size: 1.6rem;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -.01em;
+  }
+  .stat-box__label {
+    font-size: .75rem;
+    color: rgba(255,255,255,.6);
+    line-height: 1.35;
+    letter-spacing: .01em;
+  }
+
+  /* ── Collaborators row ───────────────────────────────────────── */
+  .collab-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+    margin-bottom: 2rem;
+  }
+  .collab-block {
+    border: 1px solid var(--rule);
+    padding: 1.1rem 1.25rem;
+    background: var(--white);
+  }
+  .collab-block--right {
+    background: var(--amber-lt);
+    border-color: #ddd3bb;
+  }
+  .collab-block__heading {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .6rem;
+  }
+  .collab-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+  }
+  .collab-list li {
+    display: flex;
+    flex-direction: column;
+    gap: .05rem;
+  }
+  .collab-inst {
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .collab-loc {
+    font-size: .78rem;
+    color: var(--muted);
+  }
+
+  /* ── Research directions ─────────────────────────────────────── */
+  .research-directions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .research-dir {
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--rule);
+    background: var(--white);
+  }
+  .research-dir dt {
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: .35rem;
+    line-height: 1.35;
+  }
+  .research-dir dd {
+    font-size: .84rem;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
   /* ── Compact sections (Background, Teaching, etc.) ───────────── */
   .compact-grid {
     display: grid;
@@ -396,6 +496,10 @@
 
     .funding-strip { gap: 1rem; padding: 1rem; }
     .funding-divider { display: none; }
+    .research-meta-grid { grid-template-columns: 1fr !important; }
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+    .collab-row { grid-template-columns: 1fr; }
+    .research-directions { grid-template-columns: 1fr; }
 
     .pub { grid-template-columns: 60px 1fr; }
     .pub__thumb, .pub__thumb-placeholder { width: 60px; height: 60px; }
@@ -489,8 +593,9 @@
       </p>
 
       <p class="profile__bio">
-        Raunak works at the intersection of computer vision, generative AI, and computational imaging,
-        developing learning-based approaches to visual inverse problems in science and engineering.
+        Raunak's research sits at the intersection of 3D vision and generative AI, with applications
+        to perception, mapping, and teleoperation for embodied agents — from autonomous vehicles to
+        humanoid robots.
         Before joining BITS Goa, he was a Senior AI Scientist at GE Healthcare in Bengaluru,
         working on MRI technologies. He earned his PhD in Computer Science from the University of
         Minnesota Twin Cities under <a href="https://www-users.cse.umn.edu/~jaideep/" target="_blank" rel="noopener">Prof. Jaideep Srivastava</a>,
@@ -504,10 +609,10 @@
         <li>3D Vision &amp; Persistent Mapping</li>
         <li>Autonomous Driving</li>
         <li>Robotic Teleoperation</li>
-        <li>Computational Imaging</li>
+        <li>Humanoid Agents</li>
         <li>Generative AI</li>
-        <li>Visual Inverse Problems</li>
-        <li>Medical Imaging</li>
+        <li>Computational Imaging</li>
+        <li>AI for Reasoning</li>
       </ul>
     </div>
   </header>
@@ -534,55 +639,104 @@
   <section class="section" id="research" aria-labelledby="research-heading">
     <h2 class="section__heading" id="research-heading">Research</h2>
 
-    <!-- Funding strip -->
-    <div class="funding-strip" aria-label="Funding highlights">
-      <div class="funding-stat">
-        <span class="funding-stat__num">₹1.2Cr+</span>
-        <span class="funding-stat__label">Research funding</span>
+    <!-- ── Stat boxes row ── -->
+    <div class="stat-row" aria-label="Research at a glance">
+      <div class="stat-box stat-box--navy">
+        <span class="stat-box__num">₹1.2 Cr+</span>
+        <span class="stat-box__label">Research funding</span>
       </div>
-      <div class="funding-divider" aria-hidden="true"></div>
-      <div class="funding-stat">
-        <span class="funding-stat__num">3</span>
-        <span class="funding-stat__label">Funded projects</span>
+      <div class="stat-box stat-box--navy">
+        <span class="stat-box__num">3</span>
+        <span class="stat-box__label">Funded projects</span>
       </div>
-      <div class="funding-divider" aria-hidden="true"></div>
-      <p class="funding-desc">
-        Funded by ANRF, Government of India (PM-ECRG), and industry.
-        Collaborators include researchers at NASA, CMU, University of Minnesota, and NUS.
-      </p>
+      <div class="stat-box stat-box--navy">
+        <span class="stat-box__num">20+</span>
+        <span class="stat-box__label">Top-tier publications</span>
+      </div>
+      <div class="stat-box stat-box--navy">
+        <span class="stat-box__num">8</span>
+        <span class="stat-box__label">h-index</span>
+      </div>
     </div>
 
-    <!-- Research directions -->
-    <dl style="display:flex; flex-direction:column; gap:1.1rem;">
-      <div>
-        <dt style="font-weight:600; color:var(--navy); font-size:.95rem; margin-bottom:.2rem;">
-          3D Vision for Persistent Mapping
-        </dt>
-        <dd style="font-size:.9rem; color:var(--body); line-height:1.65; padding-left:1rem; border-left:2px solid var(--rule); max-width:60ch;">
-          Developing algorithms for long-horizon, persistent scene representations in robotics and
-          agentic vision — enabling agents to build and maintain reliable 3D maps of dynamic environments
-          over extended time horizons.
-        </dd>
+    <!-- ── Collaborators & partners row ── -->
+    <div class="collab-row">
+
+      <div class="collab-block">
+        <h3 class="collab-block__heading">International Collaborators at</h3>
+        <ul class="collab-list">
+          <li>
+            <span class="collab-inst">National University of Singapore</span>
+            <span class="collab-loc">NUS</span>
+          </li>
+          <li>
+            <span class="collab-inst">Carnegie Mellon University Robotics Institute</span>
+            <span class="collab-loc">Pittsburgh, USA</span>
+          </li>
+          <li>
+            <span class="collab-inst">Minnesota Robotics Institute</span>
+            <span class="collab-loc">MnRI · University of Minnesota</span>
+          </li>
+          <li>
+            <span class="collab-inst">NASA</span>
+            <span class="collab-loc">USA</span>
+          </li>
+          <li>
+            <span class="collab-inst">RMIT University</span>
+            <span class="collab-loc">Melbourne, Australia</span>
+          </li>
+        </ul>
       </div>
-      <div>
-        <dt style="font-weight:600; color:var(--navy); font-size:.95rem; margin-bottom:.2rem;">
-          Vision for Autonomous Driving &amp; Robotic Teleoperation
-        </dt>
-        <dd style="font-size:.9rem; color:var(--body); line-height:1.65; padding-left:1rem; border-left:2px solid var(--rule); max-width:60ch;">
-          Research in perception and predictive display systems that make autonomous vehicles and
-          remotely operated robots safer and more reliable, with ANRF PM-ECRG funding supporting
-          this direction.
-        </dd>
+
+      <div class="collab-block collab-block--right">
+        <h3 class="collab-block__heading">Industry Partners</h3>
+        <ul class="collab-list">
+          <li>
+            <span class="collab-inst">Smith+Nephew</span>
+            <span class="collab-loc">Medical technology · Boston, USA</span>
+          </li>
+        </ul>
+        <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--rule);">
+          <h3 class="collab-block__heading">Funding Sources</h3>
+          <ul class="collab-list">
+            <li>
+              <span class="collab-inst">ANRF — PM-ECRG</span>
+              <span class="collab-loc">Government of India</span>
+            </li>
+            <li>
+              <span class="collab-inst">NFSG Grant</span>
+            </li>
+            <li>
+              <span class="collab-inst">Smith+Nephew</span>
+              <span class="collab-loc">Industry · Boston, USA</span>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <dt style="font-weight:600; color:var(--navy); font-size:.95rem; margin-bottom:.2rem;">
-          AI for Science &amp; Engineering: Computational Imaging
-        </dt>
-        <dd style="font-size:.9rem; color:var(--body); line-height:1.65; padding-left:1rem; border-left:2px solid var(--rule); max-width:60ch;">
-          Learning-based solutions to visual inverse problems — including phase retrieval, image
-          reconstruction, and low-dose imaging — with applications in medical imaging, microscopy,
-          and sensing.
-        </dd>
+
+    </div>
+
+    <!-- ── Research directions ── -->
+    <dl class="research-directions">
+      <div class="research-dir">
+        <dt>3D Vision &amp; Persistent Mapping for Embodied Agents</dt>
+        <dd>Developing algorithms for long-horizon, persistent scene representations that enable autonomous
+          vehicles and humanoid robots to build and maintain reliable 3D maps of dynamic environments.</dd>
+      </div>
+      <div class="research-dir">
+        <dt>Perception for Autonomous Driving &amp; Robotic Teleoperation</dt>
+        <dd>Predictive display and perception systems that make autonomous vehicles and remotely operated
+          robots safer and more reliable, supported by ANRF PM-ECRG funding.</dd>
+      </div>
+      <div class="research-dir">
+        <dt>Generative AI &amp; Computational Imaging</dt>
+        <dd>Learning-based approaches to image reconstruction and computational imaging — phase retrieval,
+          low-dose sensing, and related inverse problems — using generative models and deep priors.</dd>
+      </div>
+      <div class="research-dir">
+        <dt>AI for Reasoning &amp; Foundation Models</dt>
+        <dd>Exploring how large foundation models reason about structure, space, and causality,
+          and how these capabilities can be grounded in embodied, real-world settings.</dd>
       </div>
     </dl>
   </section>
@@ -616,7 +770,7 @@
 
       <li>
         <span class="news-date">Jan 2026</span>
-        <span>Taught Deep Learning through the course <em>Foundations to Frontier</em>, designed around the foundation-model era of AI.</span>
+        <span>Teaching the popular course <em>Deep Learning: Foundations to Frontier</em>, re-designed around the foundation-model era of AI.</span>
       </li>
 
       <li>
